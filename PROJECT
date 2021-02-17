@@ -1,0 +1,7 @@
+domain: controller.kubebuilder.io
+repo: batch.controller.kubebuilder.io/replica
+resources:
+- group: batch
+  kind: Controller
+  version: v1
+version: "2"

@@ -1,0 +1,10 @@
+apiVersion: batch.controller.kubebuilder.io/v1
+kind: Controller
+metadata:
+  name: controller-sample
+spec:
+  # Add fields here
+  # foo: bar
+  name: kubia1
+  namespace: default
+  count: 4

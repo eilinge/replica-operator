@@ -1,0 +1,20 @@
+# permissions for end users to view controllers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: controller-viewer-role
+rules:
+- apiGroups:
+  - batch.controller.kubebuilder.io
+  resources:
+  - controllers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch.controller.kubebuilder.io
+  resources:
+  - controllers/status
+  verbs:
+  - get
