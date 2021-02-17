@@ -31,6 +31,7 @@ import (
 
 	batchv1 "batch.controller.kubebuilder.io/replica/api/v1"
 	v1 "batch.controller.kubebuilder.io/replica/api/v1"
+	"batch.controller.kubebuilder.io/replica/util"
 	appsv1 "k8s.io/api/apps/v1"
 )
 
@@ -76,6 +77,24 @@ RECONCILE:
 				namespace = contr.Spec.Namespace
 				cou = contr.Spec.Count
 			}
+
+			// Install RBAC resources for the filter plugin kubernetes
+			cr, sa, crb := util.MakeRBACObjects(contr.Name, contr.Namespace)
+			// Set ServiceAccount's owner to this fluentbit
+			if err := ctrl.SetControllerReference(contr, &sa, r.Scheme); err != nil {
+				return ctrl.Result{}, err
+			}
+			if err := r.Create(ctx, &cr); err != nil && !errors.IsAlreadyExists(err) {
+				return ctrl.Result{}, err
+			}
+			if err := r.Create(ctx, &sa); err != nil && !errors.IsAlreadyExists(err) {
+				return ctrl.Result{}, err
+			}
+			if err := r.Create(ctx, &crb); err != nil && !errors.IsAlreadyExists(err) {
+				return ctrl.Result{}, err
+			}
+
+			// TODO: add rbac to replica controller
 			// get deployment and update replicas
 			count := int32(cou)
 			// deploy := de.DeepCopy() // deepcopy due to update replicas change failed
