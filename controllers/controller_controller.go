@@ -78,9 +78,9 @@ RECONCILE:
 				cou = contr.Spec.Count
 			}
 
-			// Install RBAC resources for the filter plugin kubernetes
+			// Install RBAC resources for the Controller plugin kubernetes
 			cr, sa, crb := util.MakeRBACObjects(contr.Name, contr.Namespace)
-			// Set ServiceAccount's owner to this fluentbit
+			// Set ServiceAccount's owner to this Controller
 			if err := ctrl.SetControllerReference(contr, &sa, r.Scheme); err != nil {
 				return ctrl.Result{}, err
 			}
