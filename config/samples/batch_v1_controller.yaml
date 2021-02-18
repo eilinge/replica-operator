@@ -5,6 +5,6 @@ metadata:
 spec:
   # Add fields here
   # foo: bar
-  name: kubia1
+  name: kubia
   namespace: default
-  count: 4
+  count: 3
