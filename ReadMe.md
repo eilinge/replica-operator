@@ -29,8 +29,10 @@ repcontroller-controller-manager-7d9d4fdb84-mwxh7   2/2     Running   0         
 
 1. kube-rbac-proxy pull failed
 
-replace config/default/proxy.yaml image to `jimmysong/kubebuilder-kube-rbac-proxy:v0.5.0`
+    replace config/default/proxy.yaml image to `jimmysong/kubebuilder-kube-rbac-proxy:v0.5.0`
 
 2. controller manager image pull failed
 
-add yaml: `imagePullPolicy: IfNotPresent`
+    add yaml: `imagePullPolicy: IfNotPresent`
+
+3. remind: **donnot use `go mod tidy` will due to run failed**
