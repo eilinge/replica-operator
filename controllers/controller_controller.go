@@ -29,9 +29,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	batchv1 "batch.controller.kubebuilder.io/replica/api/v1"
-	v1 "batch.controller.kubebuilder.io/replica/api/v1"
-	"batch.controller.kubebuilder.io/replica/util"
+	batchv1 "github.com/eilinge/replica-operator/api/v1"
+	"github.com/eilinge/replica-operator/util"
 	appsv1 "k8s.io/api/apps/v1"
 )
 
@@ -67,7 +66,7 @@ RECONCILE:
 	for {
 		select {
 		case <-ticker.C:
-			contr := &v1.Controller{}
+			contr := &batchv1.Controller{}
 			// get replicas name and counts
 			if err := r.Get(ctx, req.NamespacedName, contr); err != nil {
 				klog.Error("unable to fetch contr", err)

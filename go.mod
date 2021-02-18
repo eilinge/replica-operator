@@ -1,4 +1,4 @@
-module batch.controller.kubebuilder.io/replica
+module github.com/eilinge/replica-operator
 
 go 1.13
 

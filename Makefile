@@ -56,7 +56,7 @@ generate: controller-gen
 
 # Build the docker image
 docker-build: generate fmt vet manifests
-	docker build . -t ${IMG}
+	docker build . -t ${IMG} --network=host
 
 # Push the docker image
 docker-push:

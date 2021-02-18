@@ -1,5 +1,5 @@
 domain: controller.kubebuilder.io
-repo: batch.controller.kubebuilder.io/replica
+repo: github.com/eilinge/replica-operator
 resources:
 - group: batch
   kind: Controller

@@ -27,8 +27,8 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	batchv1 "batch.controller.kubebuilder.io/replica/api/v1"
-	"batch.controller.kubebuilder.io/replica/controllers"
+	batchv1 "github.com/eilinge/replica-operator/api/v1"
+	"github.com/eilinge/replica-operator/controllers"
 	// +kubebuilder:scaffold:imports
 )
 
